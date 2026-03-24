@@ -1,0 +1,4 @@
+*.pth
+*.onnx
+dataset
+__pycache__
