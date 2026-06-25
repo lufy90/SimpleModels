@@ -36,7 +36,8 @@ torch.onnx.export(
     opset_version=EXPORT_CONFIG["opset_version"],
     do_constant_folding=True,
     input_names=['input'],
-    output_names=['output']
+    output_names=['output'],
+    external_data=False
 )
 
 print(f"Model exported to {output_path}")

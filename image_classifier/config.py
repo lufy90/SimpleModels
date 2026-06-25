@@ -36,6 +36,6 @@ PREDICT_CONFIG = {
 EXPORT_CONFIG = {
     "num_classes": 5,
     "input_size": 224,
-    "opset_version": 12,
+    "opset_version": 18,
     "device": torch.device("cuda:0" if torch.cuda.is_available() else "cpu"),
 }

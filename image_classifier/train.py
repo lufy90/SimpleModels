@@ -83,8 +83,12 @@ sample_counts = torch.bincount(train_targets, minlength=NUM_CLASSES).float()
 class_weights = (sample_counts.sum() / (sample_counts + 1e-6))
 class_weights = class_weights / class_weights.sum()
 
-train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
-val_loader = DataLoader(val_dataset, batch_size=BATCH_SIZE)
+train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True,
+    num_workers=6, pin_memory=True, prefetch_factor=3, persistent_workers=True
+)
+val_loader = DataLoader(val_dataset, batch_size=BATCH_SIZE,
+    num_workers=6, pin_memory=True, prefetch_factor=3, persistent_workers=True
+)
 
 print(f"Classes: {base_dataset.classes}")
 print(f"Train size: {len(train_dataset)}, Val size: {len(val_dataset)}")
